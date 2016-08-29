@@ -1,4 +1,43 @@
-# ChangeLog
+# PHPMailer Change Log
+
+## Version 6.0
+This is a major update that breaks backwards compatibility.
+
+* **Requires PHP 5.5 or later**
+* Uses the `PHPMailer\PHPMailer` namespace
+* File structure simplified, classes live in the `src/` folder
+* The custom autoloader has been removed, now PSR-4 compatible: [**use composer**](https://getcomposer.org)!
+* Classes & Exceptions renamed to make use of the namespace
+* Most statically called functions now use the `static` keyword instead of `self`, so it's possible to override static internal functions in subclasses, for example `validateAddress()`
+* Complete RFC standardisation on CRLF (`\r\n`) line breaks by default:
+  * `PHPMailer:$LE` removed
+  * `PHPMailer::CRLF` line ending constant renamed to `PHPMailer::LE`, defaults to "\r\n", used everywhere
+  * All uses of `PHPMailer::$LE` property converted to use `static:LE` constant for consistency and ease of overriding
+  * Similar changes to line break handling in SMTP and POP3 classes.
+* Extensive reworking of XOAUTH2, adding support for Google, Yahoo and Microsoft providers, thanks to @sherryl4george
+* Major cleanup of docs and examples
+* All elements previously marked as deprecated have been removed:
+  * `PHPMailer->Version`
+  * `PHPMailer->ReturnPath`
+  * `PHPMailer->PluginDir`
+  * `PHPMailer->encodeQPphp()`
+  * `SMTP->CRLF`
+  * `SMTP->Version`
+  * `SMTP->SMTP_PORT`
+  * `POP3->CRLF`
+  * `POP3->Version`
+* NTLM authentication has been removed - it never worked anyway!
+  * `PHPMailer->Workstation`
+  * `PHPMailer->Realm`
+* `SMTP::authenticate` method signature changed
+* `parseAddresses()` is now static
+* `validateAddress()` is now called statically from `parseAddresses()`
+* `idnSupported()` is now static and is called statically from `punyencodeAddress()`
+* `PHPMailer->SingleToArray` is now protected
+* Don't try to use an auth mechanism if it's not supported by the server
+* Reorder automatic AUTH mechanism selector to try most secure method first
+* `Extras` classes have been removed - use packages from [packagist.org](https://packagist.org) instead
+* Better handling of automatic transfer encoding switch in the presence of long lines
 
 ## Version 5.2.16 (June 6th 2016)
 * Added DKIM example
