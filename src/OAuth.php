@@ -3,17 +3,18 @@
 /**
  * PHPMailer - PHP email creation and transport class.
  * PHP Version 5.5
- * @package PHPMailer
- * @link https://github.com/PHPMailer/PHPMailer/ The PHPMailer GitHub project
- * @author Marcus Bointon (Synchro/coolbru) <phpmailer@synchromedia.co.uk>
- * @author Jim Jagielski (jimjag) <jimjag@gmail.com>
- * @author Andy Prevost (codeworxtech) <codeworxtech@users.sourceforge.net>
- * @author Brent R. Matzelle (original founder)
+ *
+ * @package   PHPMailer
+ * @see       https://github.com/PHPMailer/PHPMailer/ The PHPMailer GitHub project
+ * @author    Marcus Bointon (Synchro/coolbru) <phpmailer@synchromedia.co.uk>
+ * @author    Jim Jagielski (jimjag) <jimjag@gmail.com>
+ * @author    Andy Prevost (codeworxtech) <codeworxtech@users.sourceforge.net>
+ * @author    Brent R. Matzelle (original founder)
  * @copyright 2012 - 2015 Marcus Bointon
  * @copyright 2010 - 2012 Jim Jagielski
  * @copyright 2004 - 2009 Andy Prevost
- * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
- * @note This program is distributed in the hope that it will be useful - WITHOUT
+ * @license   http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
+ * @note      This program is distributed in the hope that it will be useful - WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE.
  */
@@ -27,22 +28,23 @@ use League\OAuth2\Client\Provider\AbstractProvider;
 /**
  * OAuth - OAuth2 authentication wrapper class.
  * Uses the oauth2-client package from the League of Extraordinary Packages
- * @link http://oauth2-client.thephpleague.com
+ *
+ * @see     http://oauth2-client.thephpleague.com
  * @package PHPMailer
- * @author Marcus Bointon (Synchro/coolbru) <phpmailer@synchromedia.co.uk>
+ * @author  Marcus Bointon (Synchro/coolbru) <phpmailer@synchromedia.co.uk>
  */
 class OAuth
 {
     /**
      * An instance of the League OAuth Client Provider.
-     * @access protected
+     *
      * @var AbstractProvider
      */
     protected $provider = null;
 
     /**
      * The current OAuth access token.
-     * @access protected
+     *
      * @var AccessToken
      */
     protected $oauthToken = null;
@@ -50,35 +52,35 @@ class OAuth
     /**
      * The user's email address, usually used as the login ID
      * and also the from address when sending email.
-     * @access protected
+     *
      * @var string
      */
     protected $oauthUserEmail = '';
 
     /**
      * The client secret, generated in the app definition of the service you're connecting to.
-     * @access protected
+     *
      * @var string
      */
     protected $oauthClientSecret = '';
 
     /**
      * The client ID, generated in the app definition of the service you're connecting to.
-     * @access protected
+     *
      * @var string
      */
     protected $oauthClientId = '';
 
     /**
      * The refresh token, used to obtain new AccessTokens.
-     * @access protected
+     *
      * @var string
      */
     protected $oauthRefreshToken = '';
 
     /**
      * OAuth constructor.
-     * @access public
+     *
      * @param array $options Associative array containing
      *   `provider`, `userName`, `clientSecret`, `clientId` and `refreshToken` elements
      */
@@ -93,7 +95,7 @@ class OAuth
 
     /**
      * Get a new RefreshToken.
-     * @access protected
+     *
      * @return RefreshToken
      */
     protected function getGrant()
@@ -103,7 +105,7 @@ class OAuth
 
     /**
      * Get a new AccessToken.
-     * @access protected
+     *
      * @return AccessToken
      */
     protected function getToken()
@@ -116,7 +118,7 @@ class OAuth
 
     /**
      * Generate a base64-encoded OAuth token.
-     * @access public
+     *
      * @return string
      */
     public function getOauth64()
